@@ -1,0 +1,20 @@
+.content {
+  width: auto !important;
+  transition: all 0.5s;
+  margin-top: 80px;
+}
+
+.isExpand {
+  margin-left: 220px;
+}
+
+.isNotExpand {
+  margin-left: 80px;
+}
+
+@media (max-width: 767px) {
+  .content {
+    transition: all 0.5s;
+    margin-left: 0px;
+  }
+}

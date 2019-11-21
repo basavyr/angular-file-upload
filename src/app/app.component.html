@@ -1,0 +1,8 @@
+<body>
+  <app-nav-menu></app-nav-menu>
+  <app-side-bar (expand)="onSidebarExpand($event)"></app-side-bar>
+  <div class="content {{containerStyle}}">
+    <!-- Page Content here -->
+    <router-outlet></router-outlet>
+  </div>
+</body>

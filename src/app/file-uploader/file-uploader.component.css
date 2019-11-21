@@ -1,0 +1,48 @@
+html,
+body {
+  height: 100%;
+}
+
+.actions {
+  /* float: right; */
+}
+
+.file-name {
+  /* word-break: break-all !important; */
+}
+
+.custom-file-label > p{
+    white-space: nowrap; 
+    /* width: 70%;  */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status { text-align: center !important; }
+
+input[type="file"] {
+    display: none;
+}
+
+.input-label{
+  display: inline-block;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .label-hide{
+    display: none;
+  }
+
+  .fa{
+    height: 24px !important;
+    width: 24px !important;
+  }
+
+  .custom-file-label > p{
+    white-space: nowrap; 
+    width: 70%; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

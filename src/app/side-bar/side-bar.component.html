@@ -1,0 +1,70 @@
+<div id="sidebar">
+  <div id="sidebar-wrapper">
+    <!-- Word Menu -->
+    <ul class="sidebar-nav {{isWordMenu}}">
+      <li (click)="onExpandMenu(false)">
+        <i class="sidebarCollapse fa fa-bars"></i>
+      </li>
+      <div class="accordion" id="accordionMenu">
+        <div *ngFor="let menu of menuList; let i = index">
+          <li
+            [attr.id]="'heading_' + i"
+            class="text-dark"
+            data-toggle="collapse"
+            [attr.data-target]="'#collapse_' + i"
+            aria-expanded="false"
+            [attr.aria-controls]="'collapse_' + i"
+          >
+            <div class="row">
+              <div class="col-9">
+                <a routerLink="{{menu.route}}" routerLinkActive="selectedWord"
+                  >{{menu.title}}</a
+                >
+              </div>
+              <div class="col-1">
+                <i class="fa fa-chevron-down"></i
+                ><i class="fa fa-chevron-right"></i>
+              </div>
+            </div>
+          </li>
+          <div
+            [attr.id]="'collapse_' + i"
+            class="collapse"
+            [attr.aria-labelledby]="'heading_' + i"
+            data-parent="#accordionMenu"
+          >
+            <div class="card-body">
+              <li
+                *ngFor="let sub of menu.subMenu"
+                routerLink="{{sub.route}}"
+                routerLinkActive="selectedWord"
+              >
+                <a>{{sub.title}}</a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+    <!-- Icon Menu -->
+    <ul class="sidebar-nav {{isIcon}}">
+      <li (click)="onExpandMenu(true)">
+        <i class="sidebarCollapse fa fa-bars"></i>
+      </li>
+      <div class="dropdown" *ngFor="let menu of menuList">
+        <li>
+          <span routerLink="{{menu.route}}" routerLinkActive="selectedIcon"
+            ><i class="{{menu.icon}}"></i
+          ></span>
+          <div class="dropdown-content shadow">
+            <li *ngFor="let sub of menu.subMenu">
+              <a routerLink="{{sub.route}}" routerLinkActive="selectedWord"
+                >{{sub.title}}</a
+              >
+            </li>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

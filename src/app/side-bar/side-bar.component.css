@@ -1,0 +1,200 @@
+/* Sidebar */
+#sidebar-wrapper {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 36px;
+  left: 0;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  overflow-x: auto;
+  padding-top: 20px;
+  max-width: 200px !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2); */
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    margin-left: -200px;
+  }
+  to {
+    margin-left: 0px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    margin-left: -200px;
+  }
+  to {
+    margin-left: 0px;
+  }
+}
+
+.isNotWordMenu {
+  display: none;
+}
+
+.isWordMenu {
+  margin-right: 70px;
+  width: 200px !important;
+  padding: 0px 20px 0px 0px;
+  display: block;
+  -webkit-animation: fadeIn 0.2s;
+  animation: fadeIn 0.2s;
+}
+
+.isNotIcon {
+  display: none;
+}
+
+.isIcon {
+  display: block;
+  -webkit-animation: fadeIn 0.2s;
+  animation: fadeIn 0.2s;
+  border-right: 6px solid rgba(0, 0, 0, 0);
+  width: 60px !important;
+}
+
+/* Icon Menu Styling*/
+li:focus,
+i:focus,
+span:focus {
+  outline: 0px;
+}
+
+.fa {
+  color: black;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.selectedIcon > .fa {
+  color: #4bc3ff !important;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
+  position: fixed;
+  width: 200px;
+  padding: 10px;
+  border-radius: 4px;
+  background: white;
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px 0px;
+  line-height: 20px !important;
+  text-decoration: none;
+  display: block;
+  border-left: 6px solid rgba(0, 0, 0, 0);
+}
+
+.dropdown > li:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  margin: -50px 0px 0px 30px;
+}
+
+.dropdown-content > li:hover a {
+  color: #4bc3ff;
+}
+
+/*Word Menu Styling*/
+li[aria-expanded="true"] .fa-chevron-right {
+  display: none;
+  transition: all 0.2s;
+}
+
+li[aria-expanded="false"] .fa-chevron-down {
+  display: none;
+  transition: all 0.2s;
+}
+
+a {
+  color: black;
+}
+
+.selectedWord {
+  font-weight: bold;
+  color: #4bc3ff !important;
+}
+
+.card-body {
+  background: white;
+  color: black;
+  padding: 5px 0px 10px 10px;
+}
+
+.col-10:hover a,
+.card-body > li:hover a {
+  background: rgba(0, 0, 0, 0) !important;
+  color: #4bc3ff !important;
+}
+
+.span {
+  display: block;
+}
+
+.col-1 {
+  margin-left: -10px;
+}
+
+#accordionMenu li,
+.dropdown-content {
+  overflow-wrap: break-word !important;
+  line-height: 20px;
+}
+
+.row {
+  padding-top: 10px;
+}
+
+/* Sidebar styling */
+.sidebar-nav {
+  padding: 0;
+  list-style: none;
+  transition: all 0.5s;
+  text-align: left;
+}
+
+li {
+  line-height: 40px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 15px;
+  display: block;
+  border-left: 6px solid rgba(0, 0, 0, 0);
+}
+
+li:hover {
+  transition: all 0.2s;
+  border-left: 6px solid #4bc3ff;
+}
+
+.isWordMenu li:hover a,
+li:hover i {
+  color: #4bc3ff;
+}
+
+a,
+li {
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+@media (max-width: 767px) {
+  #sidebar-wrapper {
+    display: none;
+  }
+}

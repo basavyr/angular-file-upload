@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
+  <a class="navbar-brand" href="#">Log-File-Uploader</a>
+  <button
+    class="navbar-toggler navbar-toggler-left"
+    type="button"
+    data-toggle="collapse"
+    data-target=".navbarMenu"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse navbarMenu collapse ">
+    <ul class="navbar-nav mr-auto shadow-none">
+      <!-- Mobile -->
+      <div class="accordion mobileSubContent" id="accordionMobile">
+        <div *ngFor="let menu of menuList; let i = index">
+          <li
+            [attr.id]="'headingM_' + i"
+            class="text-dark"
+            data-toggle="collapse"
+            [attr.data-target]="'#collapseM_' + i"
+            aria-expanded="false"
+            [attr.aria-controls]="'collapseM_' + i"
+          >
+            <div class="row">
+              <div class="col-10">
+                <a routerLink="{{menu.route}}" routerLinkActive="selectedWord"
+                  >{{menu.title}}
+                </a>
+              </div>
+              <div class="col-1">
+                <i class="fa fa-chevron-down"></i>
+                <i class="fa fa-chevron-right"></i>
+              </div>
+            </div>
+          </li>
+          <div
+            [attr.id]="'collapseM_' + i"
+            class="collapse"
+            [attr.aria-labelledby]="'headingM_' + i"
+            data-parent="#accordionMobile"
+          >
+            <div class="mobileSub">
+              <li
+                *ngFor="let sub of menu.subMenu"
+                routerLink="{{sub.route}}"
+                routerLinkActive="selectedWord"
+              >
+                <a>{{sub.title}}</a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </div>
+  <div
+    class="overlay navbarMenu collapse mobileSubContent"
+    (click)="onClick()"
+  ></div>
+</nav>

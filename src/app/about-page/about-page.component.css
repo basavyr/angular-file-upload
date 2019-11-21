@@ -1,0 +1,27 @@
+/* Page Content */
+.isClosePage {
+  width: 100%;
+  position: relative;
+  padding: 15px;
+  transition: all 0.5s;
+  padding: 50px 0px 0px 50px;
+}
+
+.isOpenPage {
+  width: 100%;
+  position: relative;
+  padding: 15px;
+  transition: all 0.5s;
+  padding: 50px 0px 0px 200px;
+}
+
+@media (max-width: 500px) {
+  .isClosePage,
+  .isOpenPage {
+    width: 100%;
+    position: absolute;
+    padding: 35px 15px 15px 15px;
+    transition: all 0.5s;
+  }
+
+}

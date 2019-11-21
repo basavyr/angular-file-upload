@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="card " style="width: 100%;">
+    <div class="card-body">
+      <div class="mb-5">
+        <h3>Select files</h3>
+        <div class="custom-file">
+          <label
+            for="input-btn"
+            class="btn btn-outline-info btn-md shadow input-label"
+            >Browse</label
+          >
+          <input
+            type="file"
+            class="input"
+            id="input-btn"
+            accept=".csv"
+            ng2FileSelect
+            [uploader]="uploader"
+            multiple
+          />
+        </div>
+      </div>
+      <div class="upload mb-4">
+        <h3>Upload files</h3>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th>File Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of uploader.queue" class="file-name">
+                <td>
+                  {{ item?.file?.name }}<br />
+                  <small
+                    class="text-secondary"
+                    *ngIf="uploader.options.isHTML5"
+                    nowrap
+                  >
+                    {{ item?.file?.size/1024 | number:'.2' }} kB
+                  </small>
+                </td>
+                <td class="status" title="{{onUpload(item)}}">
+                  <span *ngIf="item.isSuccess"
+                    ><i class="fa fa-check"></i
+                  ></span>
+                  <span *ngIf="item.isError"
+                    ><i class="fa fa-exclamation-triangle"></i
+                  ></span>
+                </td>
+                <td class="text-center" nowrap>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary shadow-sm btn-sm"
+                    (click)="item.upload()"
+                    [disabled]="item.isReady || item.isUploading || item.isSuccess"
+                    title="Upload"
+                  >
+                    <i class="fa fa-upload"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger shadow-sm btn-sm"
+                    (click)="item.remove()"
+                    title="Remove"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="actions text-center mt-1">
+          <button
+            type="button"
+            class="btn btn-outline-primary shadow"
+            (click)="uploader.uploadAll()"
+            [disabled]="!uploader.getNotUploadedItems().length"
+            title="Upload All"
+          >
+            <i class="fa fa-upload"></i> <span class="">Upload All</span>
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger shadow"
+            (click)="uploader.clearQueue()"
+            [disabled]="!uploader.queue.length"
+            title="Remove All"
+          >
+            <i class="fa fa-trash"></i> <span class="">Remove All</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
